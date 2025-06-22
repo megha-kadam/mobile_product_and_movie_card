@@ -1,0 +1,49 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12" *ngFor="let mobile of mobileArray">
+            <div class="card mobileCard"
+            [ngClass]="{
+                'notavailable' : !mobile.isAvailable
+            }">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img [src]="mobile.image ? mobile.image : 'https://placehold.co/600x400/EEE/31343C'"
+                            [alt]="mobile.name" [title]="mobile.name">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="titleRating d-flex justify-content-between">
+                                <h3>{{mobile.name}}</h3>
+                                <h6 class="text-white"
+                                [ngClass]="{
+                                    'badge badge-success' : mobile.rating > 4,
+                                    'badge badge-warning' : mobile.rating < 4 && mobile.rating >= 3,
+                                    'badge badge-danger' : mobile.rating < 3
+                                }">{{mobile.rating}}</h6>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let feature of mobile.features">
+                                    {{feature}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2">
+                            <strong>{{mobile.price | currency : "INR"}}</strong>
+                            <br>
+                            <del>
+                                <strong>{{mobile.price + mobile.price * .20 | currency : "INR"}}</strong>
+                            </del>
+                            <strong> 20% offer</strong>
+
+                            <p *ngIf="mobile.noOfItems < 10" class="text-danger">Only {{mobile.noOfItems}} left!!!</p>
+                        </div>
+                    </div>
+                </div>
+                <p *ngIf="!mobile.isAvailable"
+                class="unAvailable">
+                    Product is currently unavailable!!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

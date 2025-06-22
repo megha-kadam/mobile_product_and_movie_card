@@ -1,0 +1,41 @@
+.movieCard{
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    figcaption .titleRating{
+        background-color: #22254b;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .titleRating h3{
+        height: 40px;
+        display: block;
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .overview{
+        position: absolute;
+        bottom: 0;
+        background-color: white;
+        text-align: justify;
+        transform: translateY(110%);
+        opacity: 0;
+        transition: all 0.5s linear;
+    }
+
+    &.movieCard:hover .overview{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

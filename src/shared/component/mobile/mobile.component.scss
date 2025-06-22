@@ -1,0 +1,20 @@
+.mobileCard{
+    img{
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .unAvailable{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25px;
+        font-weight: 600px;
+        color: red;
+    }
+    &.notavailable .card-body{
+        filter: blur(2px) grayscale(1);
+    }
+
+}
